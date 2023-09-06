@@ -1,0 +1,14 @@
+{
+  "code": 400,
+  "message": "Failed to create record.",
+  "data": {
+    "email": {
+      "code": "validation_invalid_email",
+      "message": "The email is invalid or already in use."
+    },
+    "username": {
+      "code": "validation_invalid_username",
+      "message": "The username is invalid or already in use."
+    }
+  }
+}

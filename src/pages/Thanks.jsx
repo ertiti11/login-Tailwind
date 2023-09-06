@@ -1,6 +1,18 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 /* eslint-disable no-unused-vars */
 
 export default function Thanks() {
+  const navigate = useNavigate();
+  const [accept, setAccept] = useState(false);
+
+  useEffect(() => {
+    if (accept) {
+      navigate("/register");
+    }
+  }, [navigate, accept]);
+
   return (
     <>
       <div className="flex items-center justify-center h-screen">
@@ -40,7 +52,12 @@ export default function Thanks() {
                   d="M7 16l-4-4m0 0l4-4m-4 4h18"
                 />
               </svg>
-              <button className="text-sm font-medium">OK!</button>
+              <button
+                onClick={() => setAccept(true)}
+                className="text-sm font-medium"
+              >
+                OK!
+              </button>
             </a>
           </div>
         </div>

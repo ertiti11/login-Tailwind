@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import Thanks from "./pages/Thanks";
+import Quest from "./pages/Quest";
 function App() {
   return (
     <AuthProvider>
@@ -14,6 +15,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<HomePage />} />
           </Route>
+          <Route path="/quest" element={<Quest />} />
           <Route path="/finished" element={<Thanks />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/authContext";
 import ErrorModal from "../components/ui/ErrorModal/ErrorModal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 export default function RegisterPage() {
   const {
@@ -19,7 +19,7 @@ export default function RegisterPage() {
 
   useEffect(() => {
     if (isRegistered) {
-      navigate("/finished");
+      navigate("/quest");
     }
   }, [navigate, isRegistered]);
 
@@ -108,6 +108,15 @@ export default function RegisterPage() {
               >
                 Sign Up
               </button>
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                Do you already have an account?
+                <Link
+                  className="font-medium text-primary-600 hover:underline dark:text-primary-500 ml-4"
+                  to={"/login"}
+                >
+                  Sign In
+                </Link>
+              </p>
 
               <div className="flex items-center">
                 <div className="flex-1 h-[1px] bg-gray-300"></div>

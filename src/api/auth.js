@@ -12,3 +12,7 @@ export const loginRequest = async ({ email, password }) => {
   console.log("loginRequest", email, password);
   return await client.collection("users").authWithPassword(email, password);
 };
+
+export const createQuest = async (quest) => {
+  return await client.collection("encuesta").create(quest);
+};
