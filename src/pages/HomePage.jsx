@@ -17,7 +17,6 @@ export default function HomePage() {
       window.location.href = "/login"; // Redirigir si no hay usuario
     }
   }, [user]);
-  console.log(user);
   return (
     <>
       <div className="flex items-center justify-center h-screen">

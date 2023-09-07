@@ -1,24 +1,34 @@
 import { useState, useEffect } from "react";
 import { createQuest } from "../api/auth";
 import { useNavigate } from "react-router-dom";
+import { client } from "../api/auth";
+import { useAuth } from "../context/authContext";
 export default function Quest() {
   const [selectedOption, setSelectedOption] = useState("");
   const [submit, setSubmit] = useState(false);
+
+  const { user } = useAuth();
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const nose = JSON.parse(window.localStorage.getItem("pocketbase_auth"));
     const data = {
       colores: selectedOption,
+      user: nose.model.id,
     };
+
     await createQuest(data);
     setSubmit(true);
   };
   const navigate = useNavigate();
   useEffect(() => {
-    if (submit) navigate("/finished");
+    if (submit) {
+      client.authStore.clear();
+      navigate("/finished");
+    }
   }, [navigate, submit]);
 
   return (

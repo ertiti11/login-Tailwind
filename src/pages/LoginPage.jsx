@@ -14,8 +14,16 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const onSubmit = handleSubmit((data) => {
     sigIn(data);
-    console.log(user);
   });
+
+  // MIRARRRRr  ñljñlakjsdñlkfjasñldkfjañslkdjf
+  useEffect(() => {
+    if (window.localStorage.getItem("pocketbase_auth")) {
+      navigate("/quest");
+    }
+  }, [navigate]);
+
+  ////////////////////////////////////////
 
   useEffect(() => {
     if (user) navigate("/");

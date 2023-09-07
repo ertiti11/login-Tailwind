@@ -34,9 +34,7 @@ export const AuthProvider = ({ children }) => {
       const response = await registerRequest(data);
       setUser(response);
       setIsRegistered(true);
-      console.log(response);
     } catch (error) {
-      console.log(error.response);
       setError(error.response.message);
     }
   };
@@ -45,9 +43,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const usuario = await loginRequest(data);
       setUser(usuario);
-      console.log(window.localStorage.getItem("pocketbase_auth"));
     } catch (error) {
-      console.log(error.response.message);
       setError(error.response.message);
     }
   };
