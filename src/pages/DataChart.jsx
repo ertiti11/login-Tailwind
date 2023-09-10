@@ -1,57 +1,55 @@
 import { useEffect, useRef, useState } from "react";
-import Chart from "chart.js/auto";
+import Chart from "chart.js/auto"; // Importa Chart.js
 import { getData } from "../api/auth";
 
 const DataChart = () => {
   const chartRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState("");
+
   useEffect(() => {
     const fetchDataAndCreateChart = async () => {
-      const { colores, votes } = await getData();
+      const { respuestas, votes } = await getData();
       setVotes(votes);
       console.log(votes);
-      if (colores) {
+      if (respuestas) {
         try {
-          // Espera un momento antes de crear el gráfico
-          setTimeout(() => {
-            // if (colores){
+          const data = {
+            labels: [
+              "Opción A: AquaRefining: una forma limpia de reciclar plomo.",
+              "Opción B: Hywind Scotland, la primera granja flotante de aeros.",
+            ],
+            datasets: [
+              {
+                data: respuestas,
+                backgroundColor: ["#25CF0D", "#0D65CF"],
+              },
+            ],
+          };
 
-            // }
-            const data = {
-              labels: ["verde", "azul", "rojo"],
-              datasets: [
-                {
-                  data: colores,
-                  backgroundColor: ["#25CF0D", "#0D65CF", "#CF0D2A"],
-                  color: "fffff",
-                },
-              ],
-            };
-
-            const options = {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: {
-                  labels: {
-                    color: "white",
-                    font: {
-                      size: 16,
-                    },
+          const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                labels: {
+                  color: "white",
+                  font: {
+                    size: 16,
                   },
                 },
               },
-            };
+            },
+          };
 
-            const doughnutChart = new Chart(chartRef.current, {
-              type: "doughnut",
-              data: data,
-              options: options,
-            });
-            setIsLoading(false);
-            // Establecer isLoading en false después de crear el gráfico
-          }, 100); // 100 milisegundos de retraso
+          // Crea el gráfico de Chart.js en el elemento canvas
+          const doughnutChart = new Chart(chartRef.current, {
+            type: "doughnut",
+            data: data,
+            options: options,
+          });
+
+          setIsLoading(false);
         } catch (error) {
           console.error("Error al obtener datos:", error);
         }
@@ -99,7 +97,7 @@ const DataChart = () => {
             </div>
             <div>
               <h1 className="mt-12 text-4xl text-center font-bold text-white">
-                Votes: {votes}
+                Votos: {votes}
               </h1>
             </div>
           </>

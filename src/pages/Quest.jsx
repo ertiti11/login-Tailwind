@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { createQuest } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { client } from "../api/auth";
-import { useAuth } from "../context/authContext";
 export default function Quest() {
   const [selectedOption, setSelectedOption] = useState("");
   const [submit, setSubmit] = useState(false);
 
-  const { user } = useAuth();
+
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -16,8 +15,8 @@ export default function Quest() {
     event.preventDefault();
     const nose = JSON.parse(window.localStorage.getItem("pocketbase_auth"));
     const data = {
-      colores: selectedOption,
       user: nose.model.id,
+      respuesta: selectedOption,
     };
 
     await createQuest(data);
@@ -40,7 +39,7 @@ export default function Quest() {
           </h1>
           <div className="control-group">
             <p className="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-white">
-              Pregunta: ¿Cuál es tu color favorito?
+              Vota por tu proyecto favorito (solo te dejará votar 1 sola vez)
             </p>
 
             <div className="flex items-center mb-4">
@@ -48,8 +47,8 @@ export default function Quest() {
                 id="default-checkbox"
                 type="checkbox"
                 name="colorOption"
-                value="verde"
-                checked={selectedOption === "verde"}
+                value="A"
+                checked={selectedOption === "A"}
                 onChange={handleOptionChange}
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
@@ -57,7 +56,7 @@ export default function Quest() {
                 htmlFor="default-checkbox"
                 className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
-                Verde
+                AquaRefining: una forma limpia de reciclar plomo.
               </label>
             </div>
             <div className="flex items-center mb-4">
@@ -65,8 +64,8 @@ export default function Quest() {
                 id="default-checkbox"
                 type="checkbox"
                 name="colorOption"
-                value="rojo"
-                checked={selectedOption === "rojo"}
+                value="B"
+                checked={selectedOption === "B"}
                 onChange={handleOptionChange}
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
@@ -74,24 +73,7 @@ export default function Quest() {
                 htmlFor="default-checkbox"
                 className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
-                Rojo
-              </label>
-            </div>
-            <div className="flex items-center mb-4">
-              <input
-                id="default-checkbox"
-                type="checkbox"
-                name="colorOption"
-                value="azul"
-                checked={selectedOption === "azul"}
-                onChange={handleOptionChange}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
-              <label
-                htmlFor="default-checkbox"
-                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Azul
+                Hywind Scotland: la primera granja flotante de aeros.
               </label>
             </div>
           </div>

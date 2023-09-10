@@ -22,50 +22,38 @@ export const createQuest = async (quest) => {
 };
 
 export const getData = async () => {
-  let colores = [];
+  let respuestas = [];
   try {
-    const azul = await client
+    const A = await client
       .collection("encuesta")
       .getFullList(
-        { fields: "colores", filter: 'colores = "azul"' },
+        { fields: "respuesta", filter: 'respuesta = "A"' },
         { requestKey: null }
       );
-    colores.push(azul.length);
+    respuestas.push(A.length);
   } catch (e) {
-    console.log("azul" + e);
+    console.log("A" + e);
   }
 
   try {
-    const rojo = await client
+    const B = await client
       .collection("encuesta")
       .getFullList(
-        { fields: "colores", filter: 'colores = "rojo"' },
+        { fields: "respueta", filter: 'respuesta = "B"' },
         { requestKey: null }
       );
-    colores.push(rojo.length);
+    respuestas.push(B.length);
   } catch (e) {
-    console.log("rojo" + e);
-  }
-
-  try {
-    const verde = await client
-      .collection("encuesta")
-      .getFullList(
-        { fields: "colores", filter: 'colores = "verde"' },
-        { requestKey: null }
-      );
-    colores.push(verde.length);
-  } catch (e) {
-    console.log("verde" + e);
+    console.log("B" + e);
   }
 
   const getVotes = await client
     .collection("encuesta")
-    .getFullList({ fields: "colores" }, { requestKey: null });
+    .getFullList({ fields: "respuesta" }, { requestKey: null });
 
   const data = {
     votes: getVotes.length,
-    colores: colores,
+    respuestas: respuestas,
   };
   return data;
 };
