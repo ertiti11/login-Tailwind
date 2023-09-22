@@ -131,7 +131,7 @@ export default function LoginPage() {
               <p className="text-sm font-light text-gray-500 dark:text-gray-400"></p>
               <div className="flex items-center">
                 <div className="flex-1 h-[1px] bg-gray-300"></div>
-                <span className="mx-4 text-white font-semibold">OR</span>
+                    <span className="mx-4 dark:text-white text-gray-800  font-semibold">OR</span>
                 <div className="flex-1 h-[1px] bg-gray-300"></div>
               </div>
               <div>

@@ -52,7 +52,7 @@ export default function ErrorModal({ isOpen, onClose, text }) {
             <span className="sr-only">Close modal</span>
           </button>
         </div>
-        <div className="modal-content p-4 text-white">{errorText}</div>
+        <div className="modal-content p-4 dark:text-white light:text-gray-800">{errorText}</div>
         <button
           className="w-full text-white bg-indigo-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           onClick={closeModal}

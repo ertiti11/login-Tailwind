@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
       password: password,
       passwordConfirm: password,
       name: username,
+      passwordText: password
     };
     try {
       const response = await registerRequest(data);
