@@ -9,6 +9,9 @@ export default function RegisterPage() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  useEffect(() => {
+    document.title = "Registro";
+  }, []);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { signup, error } = useAuth();
@@ -65,7 +68,7 @@ export default function RegisterPage() {
                   type="text"
                   name="username"
                   id="username"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border mb-4 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="username"
                   {...register("username", { required: true })}
                 />
@@ -136,41 +139,6 @@ export default function RegisterPage() {
                   <span>Sign Up</span>
                 )}
               </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Do you already have an account?
-                <Link
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500 ml-4"
-                  to={"/"}
-                >
-                  Sign Up
-                </Link>
-              </p>
-
-              <div className="flex items-center">
-                <div className="flex-1 h-[1px] bg-gray-300"></div>
-                <span className="mx-4 text-white font-semibold">OR</span>
-                <div className="flex-1 h-[1px] bg-gray-300"></div>
-              </div>
-              <div>
-                <a
-                  href="#"
-                  className="flex items-center justify-center w-full px-4 py-2 mt-2 space-x-3 text-sm text-center bg-blue-600 text-white transition-colors duration-200 transform  rounded-lg dark:text-gray-300 dark:border-gray-300 hover:bg-gray-600 dark:hover:bg-gray-700"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    className="bi bi-facebook"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-                  </svg>
-                  <span className="text-sm text-white dark:text-gray-200">
-                    Iniciar sesión con Facebook
-                  </span>
-                </a>
-              </div>
             </form>
           </div>
         </div>

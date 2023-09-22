@@ -9,6 +9,9 @@ export default function LoginPage() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
 
   const { sigIn, error, user } = useAuth();
   const navigate = useNavigate();
@@ -125,23 +128,15 @@ export default function LoginPage() {
               >
                 Sign In
               </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Don’t have an account yet?
-                <Link
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500 ml-4"
-                  to={"/register"}
-                >
-                  Sign Up
-                </Link>
-              </p>
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400"></p>
               <div className="flex items-center">
                 <div className="flex-1 h-[1px] bg-gray-300"></div>
                 <span className="mx-4 text-white font-semibold">OR</span>
                 <div className="flex-1 h-[1px] bg-gray-300"></div>
               </div>
               <div>
-                <a
-                  href="#"
+                <Link
+                  to={"/register"}
                   className="flex items-center justify-center w-full px-4 py-2 mt-2 space-x-3 text-sm text-center bg-blue-600 text-white transition-colors duration-200 transform  rounded-lg dark:text-gray-300 dark:border-gray-300 hover:bg-gray-600 dark:hover:bg-gray-700"
                 >
                   <svg
@@ -157,7 +152,7 @@ export default function LoginPage() {
                   <span className="text-sm text-white dark:text-gray-200">
                     Iniciar sesión con Facebook
                   </span>
-                </a>
+                </Link>
               </div>
             </form>
           </div>

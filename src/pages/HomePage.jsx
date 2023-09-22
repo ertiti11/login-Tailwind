@@ -6,6 +6,9 @@ export default function HomePage() {
   const [user, setUser] = useState(
     JSON.parse(window.localStorage.getItem("pocketbase_auth"))
   );
+  useEffect(() => {
+    document.title = "Home";
+  }, []);
 
   const handleLogout = () => {
     client.authStore.clear();

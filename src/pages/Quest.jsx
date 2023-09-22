@@ -6,11 +6,13 @@ export default function Quest() {
   const [selectedOption, setSelectedOption] = useState("");
   const [submit, setSubmit] = useState(false);
 
-
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
+  useEffect(() => {
+    document.title = "Encuesta";
+  }, []);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const nose = JSON.parse(window.localStorage.getItem("pocketbase_auth"));

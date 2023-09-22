@@ -8,6 +8,10 @@ export default function Thanks() {
   const [accept, setAccept] = useState(false);
 
   useEffect(() => {
+    document.title = "Gracias por participar";
+  }, []);
+
+  useEffect(() => {
     if (accept) {
       navigate("/register");
     }
